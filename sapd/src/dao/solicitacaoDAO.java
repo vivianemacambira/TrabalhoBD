@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class solicitacaoDAO extends DAO {
 
-    public solicitacao obter(novaSolicitacao id) throws Exception {
+    public solicitacao obter(int matricula) throws Exception {
         solicitacao s = null;
         Connection c = obterConexao();
         String sql = "SELECT solicitacao.nova_solicitacao_id, nova_solicitacao.titulo_obra, nova_solicitacao.autor_obra, solicitacao.status, solicitacao.data_prevista, solicitacao.arquivo FROM nova_solicitacao,solicitacao WHERE matricula = ?";

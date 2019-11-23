@@ -35,8 +35,22 @@ public class CampusDAO extends DAO {
         stmt.close();
         fecharConexao(c);
         if (campus == null) {
-            throw new Exception("Não foi possível localizar esta pessoa");
+            throw new Exception("Não foi possível localizar este campus");
         }
         return campus;
     }   
+    
+        public void inserir(Campus i) throws Exception {
+        Connection c = obterConexao();
+        String sql = "INSERT INTO Campus (id, nome) VALUES (?, ?)";
+        PreparedStatement stmt = c.prepareStatement(sql);
+        stmt.setInt(1, i.getId());
+        stmt.setString(2, i.getNome());  
+        int resultado = stmt.executeUpdate();
+        stmt.close();
+        fecharConexao(c);
+        if (resultado != 1) {
+            throw new Exception("Não foi possível inserir este Campus");
+        }
+    }
 }
