@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.sql.Connection;
@@ -11,12 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Leonardo Oliveira Moreira
- *
- * Classe que representa as ações de manipulação de dados na tabela pessoa
- */
 public class PCDDAO extends DAO {
 
     public void inserir(PCD p) throws Exception {
@@ -30,7 +19,6 @@ public class PCDDAO extends DAO {
         stmt.setString(5, p.getEmail());
         stmt.setString(6, p.getCurso());
         stmt.setString(7, p.getSenha());  
-        /*COMBOBOX*/
         stmt.setInt(8, p.getUa_id().getId());
         int resultado = stmt.executeUpdate();
         stmt.close();
@@ -40,21 +28,7 @@ public class PCDDAO extends DAO {
         }
     }
 
-    public void atualizar(PCD p) throws Exception {
-        Connection c = obterConexao();
-        String sql = "UPDATE PCD SET telefone = ?, email = ? WHERE matricula = ?";
-        PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setInt(1, p.getTelefone());
-        stmt.setString(2, p.getEmail());
-        int resultado = stmt.executeUpdate();
-        stmt.close();
-        fecharConexao(c);
-        if (resultado != 1) {
-            throw new Exception("Não foi possível atualizar esta pessoa");
-        }
-    }
-    
-        public void atualizarSenha(PCD p) throws Exception {
+    public void atualizarSenha(PCD p) throws Exception {
         Connection c = obterConexao();
         String sql = "UPDATE PCD SET senha = ? WHERE matricula = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
@@ -67,7 +41,8 @@ public class PCDDAO extends DAO {
             throw new Exception("Não foi possível atualizar esta pessoa");
         }
     }
-        public void atualizarEmail(PCD p) throws Exception {
+    
+    public void atualizarEmail(PCD p) throws Exception {
         Connection c = obterConexao();
         String sql = "UPDATE PCD SET email = ? WHERE matricula = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
@@ -80,7 +55,7 @@ public class PCDDAO extends DAO {
             throw new Exception("Não foi possível atualizar esta pessoa");
         }
     }
-
+    
     public void remover(PCD p) throws Exception {
         Connection c = obterConexao();
         String sql = "DELETE FROM PCD WHERE matricula = ?";
@@ -121,27 +96,4 @@ public class PCDDAO extends DAO {
         }
         return p;
     }
-
-    public List<PCD> obterTodos() throws Exception {
-        List<PCD> pessoas = new ArrayList<PCD>();
-        Connection c = obterConexao();
-        String sql = "SELECT matricula, nome, condicao_deficiencia, telefone, email, curso FROM PCD";
-        PreparedStatement stmt = c.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
-        while (rs.next()) {
-            PCD p = new PCD();
-            p.setMatricula(rs.getInt("matricula"));
-            p.setNome(rs.getString("nome"));
-            p.setCondicao_deficiencia(rs.getString("condicao_deficiencia"));
-            p.setTelefone(rs.getInt("telefone"));
-            p.setEmail(rs.getString("email"));
-            p.setCurso(rs.getString("curso"));
-            pessoas.add(p);
-        }
-        rs.close();
-        stmt.close();
-        fecharConexao(c);
-        return pessoas;
-    }
-  
 }

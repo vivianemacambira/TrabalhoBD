@@ -1,25 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author Leonardo Oliveira Moreira
- *
- * Classe que encapsula a obtenção e fechamento de conexões com o banco de dados
- */
 public class DAO {
 
     public static final String JDBC_URL = "jdbc:postgresql://localhost:5432/sapd";
     public static final String JDBC_USUARIO = "postgres";
-    public static final String JDBC_SENHA = "junior8779";
+    public static final String JDBC_SENHA = "sapd2019";
 
     protected Connection obterConexao() throws Exception {
         Connection c = null;

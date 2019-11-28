@@ -1,22 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
-/**
- *
- * @author Leonardo Oliveira Moreira
- *
- * Classe que representa as ações de manipulação de dados na tabela pessoa
- */
 public class CampusDAO extends DAO {
 
     public Campus obter(int id) throws Exception {
@@ -39,18 +26,4 @@ public class CampusDAO extends DAO {
         }
         return campus;
     }  
-    
-    public void inserir(Campus i) throws Exception {
-        Connection c = obterConexao();
-        String sql = "INSERT INTO Campus (id, nome) VALUES (?, ?)";
-        PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setInt(1, i.getId());
-        stmt.setString(2, i.getNome());  
-        int resultado = stmt.executeUpdate();
-        stmt.close();
-        fecharConexao(c);
-        if (resultado != 1) {
-            throw new Exception("Não foi possível inserir este Campus");
-        }
-    }
 }

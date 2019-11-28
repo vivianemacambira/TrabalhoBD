@@ -1,22 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
-/**
- *
- * @author Leonardo Oliveira Moreira
- *
- * Classe que representa as ações de manipulação de dados na tabela pessoa
- */
 public class novaSolicitacaoDAO extends DAO {
 
     public void inserir(novaSolicitacao ns) throws Exception {
@@ -63,7 +50,7 @@ public class novaSolicitacaoDAO extends DAO {
         stmt.close();
         fecharConexao(c);
         if (NS == null) {
-            throw new Exception("Não foi possível localizar esta pessoa");
+            throw new Exception("Não foi possível localizar esta solicitação");
         }
         return NS;
     }

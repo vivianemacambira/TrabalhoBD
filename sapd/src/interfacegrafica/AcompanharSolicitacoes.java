@@ -5,23 +5,38 @@
  */
 package interfacegrafica;
 
+import dao.novaSolicitacao;
+import dao.novaSolicitacaoDAO;
 import dao.solicitacao;
 import dao.solicitacaoDAO;
 import static interfacegrafica.NovaSolicitacao.ns;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Viviane Macambira
  */
 public class AcompanharSolicitacoes extends javax.swing.JFrame {
-
-    /**
-     * Creates new form AcompanharSolicitacoes
-     */
+    private List<solicitacao> solicitacao;
     public AcompanharSolicitacoes() {
         initComponents();
-
+        setLocationRelativeTo(null);
+        comboNomes.removeAllItems();
+        solicitacaoDAO sDAO = new solicitacaoDAO();
+        try {
+           solicitacao = sDAO.obterTodos(TelaPrincipal.pd2.matricula);
+        } catch (Exception ex) {
+            Logger.getLogger(NovaSolicitacao.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro ao pegar os nomes", "Cadastro", JOptionPane.ERROR_MESSAGE);
+        }
+        for (int i = 0; solicitacao != null && i < solicitacao.size(); i++) {
+            solicitacao S = solicitacao.get(i);
+            comboNomes.addItem(S.getNova_solicitacao().getTitulo_obra());
+        }
     }
 
     /**
@@ -33,57 +48,207 @@ public class AcompanharSolicitacoes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tituloNovaSolicitacao = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        comboNomes = new javax.swing.JComboBox<String>();
+        idPedido = new javax.swing.JLabel();
+        textoTitulo = new javax.swing.JTextField();
+        tObra = new javax.swing.JLabel();
+        textoAutor = new javax.swing.JTextField();
+        status = new javax.swing.JLabel();
+        textoStatus = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        textoData = new javax.swing.JTextField();
+        textoDownload = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        tituloNovaSolicitacao1 = new javax.swing.JLabel();
+        botaoVoltar = new javax.swing.JButton();
+
+        tituloNovaSolicitacao.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tituloNovaSolicitacao.setText("Nova Solicitação");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Minhas solicitações:");
+
+        comboNomes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboNomes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboNomesActionPerformed(evt);
+            }
+        });
+
+        idPedido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        idPedido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        idPedido.setText("Titulo da obra");
+
+        textoTitulo.setEditable(false);
+        textoTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        textoTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoTituloActionPerformed(evt);
+            }
+        });
+
+        tObra.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tObra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tObra.setText("Autor da obra");
+
+        textoAutor.setEditable(false);
+        textoAutor.setBackground(new java.awt.Color(255, 255, 255));
+
+        status.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        status.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        status.setText("Status");
+
+        textoStatus.setEditable(false);
+        textoStatus.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Data prevista");
+
+        textoData.setEditable(false);
+        textoData.setBackground(new java.awt.Color(255, 255, 255));
+
+        textoDownload.setEditable(false);
+        textoDownload.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Download");
+
+        tituloNovaSolicitacao1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tituloNovaSolicitacao1.setText("Acompanhar Solicitações");
+
+        botaoVoltar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botaoVoltar.setText("Voltar");
+        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botaoVoltar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(tituloNovaSolicitacao1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(38, 38, 38)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tObra, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(idPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(comboNomes, 0, 223, Short.MAX_VALUE)
+                                .addComponent(textoTitulo)
+                                .addComponent(textoAutor)
+                                .addComponent(textoStatus)
+                                .addComponent(textoData, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(textoDownload)))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloNovaSolicitacao1)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboNomes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(68, 68, 68)
+                        .addComponent(tObra))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idPedido))
+                        .addGap(18, 18, 18)
+                        .addComponent(textoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(status)
+                    .addComponent(textoStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textoData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(textoDownload, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addComponent(botaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AcompanharSolicitacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AcompanharSolicitacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AcompanharSolicitacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AcompanharSolicitacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void comboNomesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNomesActionPerformed
+    // TODO add your handling code here:
+        try{
+            textoTitulo.setText(solicitacao.get(comboNomes.getSelectedIndex()).getNova_solicitacao().getTitulo_obra());
+            textoAutor.setText(solicitacao.get(comboNomes.getSelectedIndex()).getNova_solicitacao().getAutor_obra());
+            textoData.setText(solicitacao.get(comboNomes.getSelectedIndex()).getData_prevista());
+            textoStatus.setText(solicitacao.get(comboNomes.getSelectedIndex()).getStatus());
+            textoDownload.setText(solicitacao.get(comboNomes.getSelectedIndex()).getArquivo());         
+        } catch (Exception ex){
+            
         }
-        //</editor-fold>
+    }//GEN-LAST:event_comboNomesActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AcompanharSolicitacoes().setVisible(true);
-            }
-        });
-    }
+    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+        // TODO add your handling code here:
+        new OpcoesSistema().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoVoltarActionPerformed
+
+    private void textoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoTituloActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_textoTituloActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoVoltar;
+    private javax.swing.JComboBox<String> combo;
+    private javax.swing.JComboBox<String> combo1;
+    private javax.swing.JComboBox<String> combo2;
+    private javax.swing.JComboBox<String> combo3;
+    private javax.swing.JComboBox<String> combo4;
+    private javax.swing.JComboBox<String> comboNomes;
+    private javax.swing.JLabel idPedido;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel status;
+    private javax.swing.JLabel tObra;
+    private javax.swing.JTextField textoAutor;
+    private javax.swing.JTextField textoData;
+    private javax.swing.JTextField textoDownload;
+    private javax.swing.JTextField textoStatus;
+    private javax.swing.JTextField textoTitulo;
+    private javax.swing.JLabel tituloNovaSolicitacao;
+    private javax.swing.JLabel tituloNovaSolicitacao1;
     // End of variables declaration//GEN-END:variables
 }

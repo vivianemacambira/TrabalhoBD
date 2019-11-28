@@ -71,6 +71,7 @@ public class CadastroPCD extends javax.swing.JFrame {
 
         rotuloSenha.setText("Senha:");
 
+        botaoInserir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botaoInserir.setText("Inserir");
         botaoInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
