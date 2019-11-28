@@ -98,7 +98,8 @@ public class OpcoesSistema extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoAlterarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarDadosActionPerformed
-        // TODO add your handling code here:
+        new alterarDados().setVisible(true);
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_botaoAlterarDadosActionPerformed
 
     private void botaoNovaSolicitacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovaSolicitacaoActionPerformed

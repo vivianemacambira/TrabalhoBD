@@ -19,7 +19,7 @@ public class DAO {
 
     public static final String JDBC_URL = "jdbc:postgresql://localhost:5432/sapd";
     public static final String JDBC_USUARIO = "postgres";
-    public static final String JDBC_SENHA = "sapd2019";
+    public static final String JDBC_SENHA = "junior8779";
 
     protected Connection obterConexao() throws Exception {
         Connection c = null;

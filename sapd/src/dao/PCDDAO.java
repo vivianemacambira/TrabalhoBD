@@ -53,6 +53,33 @@ public class PCDDAO extends DAO {
             throw new Exception("Não foi possível atualizar esta pessoa");
         }
     }
+    
+        public void atualizarSenha(PCD p) throws Exception {
+        Connection c = obterConexao();
+        String sql = "UPDATE PCD SET senha = ? WHERE matricula = ?";
+        PreparedStatement stmt = c.prepareStatement(sql);
+        stmt.setString(1, p.getSenha());
+        stmt.setInt(2, p.getMatricula());
+        int resultado = stmt.executeUpdate();
+        stmt.close();
+        fecharConexao(c);
+        if (resultado != 1) {
+            throw new Exception("Não foi possível atualizar esta pessoa");
+        }
+    }
+        public void atualizarEmail(PCD p) throws Exception {
+        Connection c = obterConexao();
+        String sql = "UPDATE PCD SET email = ? WHERE matricula = ?";
+        PreparedStatement stmt = c.prepareStatement(sql);
+        stmt.setString(1, p.getEmail());
+        stmt.setInt(2, p.getMatricula());
+        int resultado = stmt.executeUpdate();
+        stmt.close();
+        fecharConexao(c);
+        if (resultado != 1) {
+            throw new Exception("Não foi possível atualizar esta pessoa");
+        }
+    }
 
     public void remover(PCD p) throws Exception {
         Connection c = obterConexao();

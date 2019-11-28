@@ -38,5 +38,19 @@ public class NucleoDAO extends DAO {
             throw new Exception("Não foi possível localizar este núcleo");
         }
         return n;
-    }   
+    }
+    
+    public void atualizarSenha(Nucleo p) throws Exception {
+        Connection c = obterConexao();
+        String sql = "UPDATE nucleo SET senha = ? WHERE email = ?";
+        PreparedStatement stmt = c.prepareStatement(sql);
+        stmt.setString(1, p.getSenha() );
+        stmt.setString(2, p.getEmail());
+        int resultado = stmt.executeUpdate();
+        stmt.close();
+        fecharConexao(c);
+        if (resultado != 1) {
+            throw new Exception("Não foi possível atualizar esta pessoa");
+        }
+    }
 }

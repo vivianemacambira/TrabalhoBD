@@ -72,6 +72,8 @@ public class OpcoesSistemaNucleo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarSenhaActionPerformed
+        new alterarDadosNucleo().setVisible(true);
+        dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoAlterarSenhaActionPerformed
 

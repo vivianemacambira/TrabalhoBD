@@ -151,6 +151,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         try {
             nucleo = nDAO.obter(textoLogin.getText());
             if(nucleo.getSenha().equals(textoSenha.getText())){
+                novoNucleo = nucleo;
                 new OpcoesSistemaNucleo().setVisible(true);
                 this.dispose();
             } else{
