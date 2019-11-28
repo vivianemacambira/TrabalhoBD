@@ -7,9 +7,9 @@ package dao;
 
 public class PCD {
 
-    private Integer matricula;
+    public Integer matricula;
     private Integer telefone;
-    private UA ua;
+    private UA ua_id;
     private String nome;
     private String condicao_deficiencia;
     private String email;
@@ -33,12 +33,12 @@ public class PCD {
         this.telefone = telefone;
     }
 
-    public UA getUa() {
-        return ua;
+    public UA getUa_id() {
+        return ua_id;
     }
 
-    public void setUa(UA ua) {
-        this.ua = ua;
+    public void setUa_id(UA ua_id) {
+        this.ua_id = ua_id;
     }
 
     public String getNome() {

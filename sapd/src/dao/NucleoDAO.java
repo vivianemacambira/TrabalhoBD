@@ -35,7 +35,7 @@ public class NucleoDAO extends DAO {
         stmt.close();
         fecharConexao(c);
         if (n == null) {
-            throw new Exception("Não foi possível localizar esta pessoa");
+            throw new Exception("Não foi possível localizar este núcleo");
         }
         return n;
     }   

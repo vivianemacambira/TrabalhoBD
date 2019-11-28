@@ -44,13 +44,13 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="botaoCadastrar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField1" max="32767" attributes="0"/>
-                                  <Component id="jPasswordField1" min="-2" pref="294" max="-2" attributes="0"/>
+                                  <Component id="textoLogin" max="32767" attributes="0"/>
+                                  <Component id="textoSenha" min="-2" pref="294" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jButton1" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
+                              <Component id="botaoEntrar" alignment="1" min="-2" pref="88" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -74,15 +74,15 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" pref="45" max="-2" attributes="0"/>
+              <Component id="textoLogin" min="-2" pref="45" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jPasswordField1" min="-2" pref="41" max="-2" attributes="0"/>
+              <Component id="textoSenha" min="-2" pref="41" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="botaoEntrar" min="-2" pref="35" max="-2" attributes="0"/>
               <EmptySpace pref="26" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botaoCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
@@ -90,26 +90,38 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="textoLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="Login"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoLoginActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+    <Component class="javax.swing.JPasswordField" name="textoSenha">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+        <Property name="text" type="java.lang.String" value="Senha"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoSenhaActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="botaoEntrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Entrar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoEntrarActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -140,12 +152,12 @@
         <Property name="text" type="java.lang.String" value="Ainda n&#xe3;o tem cadastro? "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="botaoCadastrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastre-se aqui"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCadastrarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

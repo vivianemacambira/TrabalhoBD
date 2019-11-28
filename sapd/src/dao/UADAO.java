@@ -25,7 +25,7 @@ public class UADAO extends DAO {
         
         UA ua = null;
         Connection c = obterConexao();
-        String sql = "SELECT id, nome, campus_id, nucleo_email FROM UA WHERE id = ?";
+        String sql = "SELECT id, nome, campus_id, nucleo_email FROM ua WHERE id = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
         stmt.setInt(1, id);
         ResultSet rs = stmt.executeQuery();
@@ -34,28 +34,35 @@ public class UADAO extends DAO {
             ua.setId(rs.getInt("id"));
             ua.setNome(rs.getString("nome"));
             ua.setCampus(campusDAO.obter(rs.getInt("campus_id")));
-            
             String nucleo_email = rs.getString("nucleo_email");
             Nucleo n = nucleoDAO.obter(nucleo_email);
-            
             ua.setNucleo(n);
         }
         rs.close();
         stmt.close();
         fecharConexao(c);
         if (ua == null) {
-            throw new Exception("Não foi possível localizar esta pessoa");
+            throw new Exception("Não foi possível localizar esta unidade acadêmica");
         }
         return ua;
     }   
     
     //SELECT nucleo_email FROM nucleo as n, ua as u where n.email = u.nucleo_email and u.id = ?
-    public static void main(String[] args) throws Exception {
-        UADAO u = new UADAO();
-        UA ua = u.obter(6);
-        System.out.println(ua.getId());
-        System.out.println(ua.getNome());
-        System.out.println(ua.getCampus().getNome());
-        System.out.println(ua.getNucleo().getEmail());
+    public List<UA> obterTodos() throws Exception {
+        List<UA> ua = new ArrayList<UA>();
+        Connection c = obterConexao();
+        String sql = "SELECT id,nome FROM ua";
+        PreparedStatement stmt = c.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            UA u = new UA();
+            u.setId(rs.getInt("id"));
+            u.setNome(rs.getString("nome"));
+            ua.add(u);
+        }
+        rs.close();
+        stmt.close();
+        fecharConexao(c);
+        return ua;
     }
 }

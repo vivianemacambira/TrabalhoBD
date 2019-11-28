@@ -7,20 +7,29 @@ package interfacegrafica;
 
 import dao.PCD;
 import dao.PCDDAO;
+import dao.UA;
+import dao.UADAO;
+import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author leoomoreira
- */
-public class CadastroPCD extends javax.swing.JDialog {
+public class CadastroPCD extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaInserirPessoa
-     */
-    public CadastroPCD(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    private List<UA> ua;
+    
+    public CadastroPCD() {
         initComponents();
+        setLocationRelativeTo(null);
+        comboUA.removeAllItems();
+        UADAO uaDAO = new UADAO();
+        try {
+            ua = uaDAO.obterTodos();
+        } catch (Exception ex) {
+
+        }
+        for (int i = 0; ua != null && i < ua.size(); i++) {
+            UA u = ua.get(i);
+            comboUA.addItem(u.getNome());
+        }
     }
 
     /**
@@ -42,7 +51,7 @@ public class CadastroPCD extends javax.swing.JDialog {
         textoSenha = new javax.swing.JTextField();
         botaoInserir = new javax.swing.JButton();
         rotuloLogin1 = new javax.swing.JLabel();
-        textoUA = new javax.swing.JComboBox();
+        comboUA = new javax.swing.JComboBox();
         rotuloLogin3 = new javax.swing.JLabel();
         textoCondicao_deficiencia = new javax.swing.JTextField();
         rotuloLogin2 = new javax.swing.JLabel();
@@ -71,10 +80,10 @@ public class CadastroPCD extends javax.swing.JDialog {
 
         rotuloLogin1.setText("Uni.Ac.:");
 
-        textoUA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        textoUA.addActionListener(new java.awt.event.ActionListener() {
+        comboUA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboUA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoUAActionPerformed(evt);
+                comboUAActionPerformed(evt);
             }
         });
 
@@ -111,7 +120,7 @@ public class CadastroPCD extends javax.swing.JDialog {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(textoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(textoUA, javax.swing.GroupLayout.Alignment.LEADING, 0, 242, Short.MAX_VALUE)
+                                        .addComponent(comboUA, javax.swing.GroupLayout.Alignment.LEADING, 0, 242, Short.MAX_VALUE)
                                         .addComponent(textoCurso, javax.swing.GroupLayout.Alignment.LEADING))))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -147,7 +156,7 @@ public class CadastroPCD extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rotuloLogin1)
-                    .addComponent(textoUA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboUA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rotuloLogin3)
@@ -175,14 +184,17 @@ public class CadastroPCD extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInserirActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente inserir esta pessoa?", "Inserir Pessoa", JOptionPane.YES_NO_CANCEL_OPTION);
+        int opcao = JOptionPane.showConfirmDialog(this, "Deseja confirmar cadastro?", "Cadastro", JOptionPane.YES_NO_CANCEL_OPTION);
         if (opcao == JOptionPane.YES_OPTION) {
             try {
                 PCD p = new PCD();
+                UADAO uaDAO = new UADAO();
                 p.setMatricula(Integer.parseInt(textoMatricula.getText()));
                 p.setNome(textoNome.getText());
                 p.setCurso(textoCurso.getText());
-                p.setUA(textoUA.get());
+                int ua_id = ua.get(comboUA.getSelectedIndex()).getId();
+                UA ua = uaDAO.obter(ua_id);
+                p.setUa_id(ua);
                 p.setCondicao_deficiencia(textoCondicao_deficiencia.getText());
                 p.setTelefone(Integer.parseInt(textoTelefone.getText()));
                 p.setEmail(textoEmail.getText());
@@ -190,28 +202,25 @@ public class CadastroPCD extends javax.swing.JDialog {
                 
                 PCDDAO dao = new PCDDAO();
                 dao.inserir(p);
-                textoMatricula.setText("");
-                textoNome.setText("");
-                textoCurso.setText("");
-                textoUA.setText("");
-                textoCondicao_deficiencia.setText("");
-                textoTelefone.setText("");
-                textoEmail.setText("");
-                textoSenha.setText("");
-                JOptionPane.showMessageDialog(this, "Pessoa inserida com sucesso", "Inserir Pessoa", JOptionPane.INFORMATION_MESSAGE);
+
+                JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                new TelaPrincipal().setVisible(true);
+                this.dispose();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, ex.getMessage(), "Inserir Pessoa", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Verifique se todos os campos estão preenchidos corretamente", "Cadastro", JOptionPane.ERROR_MESSAGE);
             }
         }
         botaoInserir.transferFocus();
+        
     }//GEN-LAST:event_botaoInserirActionPerformed
 
-    private void textoUAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoUAActionPerformed
+    private void comboUAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboUAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textoUAActionPerformed
+    }//GEN-LAST:event_comboUAActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoInserir;
+    private javax.swing.JComboBox comboUA;
     private javax.swing.JLabel rotuloCodigo;
     private javax.swing.JLabel rotuloLogin;
     private javax.swing.JLabel rotuloLogin1;
@@ -227,6 +236,5 @@ public class CadastroPCD extends javax.swing.JDialog {
     private javax.swing.JTextField textoNome;
     private javax.swing.JTextField textoSenha;
     private javax.swing.JTextField textoTelefone;
-    private javax.swing.JComboBox textoUA;
     // End of variables declaration//GEN-END:variables
 }

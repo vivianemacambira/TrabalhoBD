@@ -13,7 +13,7 @@ package dao;
  */
 public class Nucleo {
 
-    private String email;
+    public String email;
     private String senha;
 
 

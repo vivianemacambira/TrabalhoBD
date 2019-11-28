@@ -21,7 +21,7 @@ public class PCDDAO extends DAO {
 
     public void inserir(PCD p) throws Exception {
         Connection c = obterConexao();
-        String sql = "INSERT INTO pcd (matricula, nome, condicao_deficiencia, telefone, email, curso, senha, ua_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO PCD (matricula, nome, condicao_deficiencia, telefone, email, curso, senha, ua_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = c.prepareStatement(sql);
         stmt.setInt(1, p.getMatricula());
         stmt.setString(2, p.getNome());
@@ -31,12 +31,12 @@ public class PCDDAO extends DAO {
         stmt.setString(6, p.getCurso());
         stmt.setString(7, p.getSenha());  
         /*COMBOBOX*/
-        stmt.setInt(8, p.getUa().getId());
+        stmt.setInt(8, p.getUa_id().getId());
         int resultado = stmt.executeUpdate();
         stmt.close();
         fecharConexao(c);
         if (resultado != 1) {
-            throw new Exception("Não foi possível inserir este PCD");
+            throw new Exception("Não foi possível inserir esta pessoa");
         }
     }
 
@@ -46,12 +46,11 @@ public class PCDDAO extends DAO {
         PreparedStatement stmt = c.prepareStatement(sql);
         stmt.setInt(1, p.getTelefone());
         stmt.setString(2, p.getEmail());
-        stmt.setInt(3, p.getMatricula());
         int resultado = stmt.executeUpdate();
         stmt.close();
         fecharConexao(c);
         if (resultado != 1) {
-            throw new Exception("Não foi possível atualizar este PCD");
+            throw new Exception("Não foi possível atualizar esta pessoa");
         }
     }
 
@@ -64,14 +63,14 @@ public class PCDDAO extends DAO {
         stmt.close();
         fecharConexao(c);
         if (resultado != 1) {
-            throw new Exception("Não foi possível remover este PCD");
+            throw new Exception("Não foi possível remover esta pessoa");
         }
     }
 
     public PCD obter(int matricula) throws Exception {
         PCD p = null;
         Connection c = obterConexao();
-        String sql = "SELECT matricula, nome, condicao_deficiencia, telefone, email, curso, ua_id FROM PCD WHERE matricula = ?";
+        String sql = "SELECT matricula, nome, condicao_deficiencia, telefone, email, curso, senha, ua_id FROM PCD WHERE matricula = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
         stmt.setInt(1, matricula);
         ResultSet rs = stmt.executeQuery();
@@ -83,57 +82,24 @@ public class PCDDAO extends DAO {
             p.setTelefone(rs.getInt("telefone"));
             p.setEmail(rs.getString("email"));
             p.setCurso(rs.getString("curso"));
-            
             UADAO dao = new UADAO();
-            p.setUa(dao.obter(rs.getInt("ua_id"))); //aqui é aquela implementação pra pôr o objeto
+            p.setUa_id(dao.obter(rs.getInt("ua_id"))); //aqui é aquela implementação pra pôr o objeto
+            p.setSenha(rs.getString("senha"));
         }
         rs.close();
         stmt.close();
         fecharConexao(c);
         if (p == null) {
-            throw new Exception("Não foi possível localizar este PCD");
+            throw new Exception("Não foi possível localizar esta pessoa");
         }
         return p;
     }
 
     public List<PCD> obterTodos() throws Exception {
-        List<PCD> listaPCD = new ArrayList<PCD>();
+        List<PCD> pessoas = new ArrayList<PCD>();
         Connection c = obterConexao();
         String sql = "SELECT matricula, nome, condicao_deficiencia, telefone, email, curso FROM PCD";
         PreparedStatement stmt = c.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
-        while (rs.next()) {
-            PCD p = new PCD();
-            p.setMatricula(rs.getInt("matricula"));
-            p.setNome(rs.getString("nome"));
-            p.setCondicao_deficiencia(rs.getString("condicao_deficiencia"));
-            p.setTelefone(rs.getInt("telefone"));
-            p.setEmail(rs.getString("email"));
-            p.setCurso(rs.getString("curso"));
-            listaPCD.add(p);
-        }
-        rs.close();
-        stmt.close();
-        fecharConexao(c);
-        return listaPCD;
-    }
-
-    public List<PCD> obterPorNomeELogin(String nome, String login) throws Exception {
-        if (nome == null || nome.trim().length() == 0) {
-            nome = "%";
-        } else {
-            nome = "%" + nome.toUpperCase() + "%";
-        }
-        if (login == null || login.trim().length() == 0) {
-            login = "%";
-        } else {
-            login = "%" + login.toUpperCase() + "%";
-        }
-        List<PCD> pessoas = new ArrayList<PCD>();
-        Connection c = obterConexao();
-        String sql = "SELECT matricula, nome, condicao_deficiencia, telefone, email, curso FROM PCD WHERE upper(nome) LIKE ?";
-        PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setString(1, nome);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             PCD p = new PCD();
@@ -149,5 +115,6 @@ public class PCDDAO extends DAO {
         stmt.close();
         fecharConexao(c);
         return pessoas;
-    }    
+    }
+  
 }

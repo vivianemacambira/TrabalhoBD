@@ -17,7 +17,7 @@ import static jdk.nashorn.internal.runtime.Debug.id;
 public class solicitacao {
 
     private novaSolicitacao nova_solicitacao;
-    private Date data_prevista;
+    private String data_prevista;
     private String status;
     private String arquivo;
 
@@ -38,14 +38,14 @@ public class solicitacao {
     /**
      * @return the data_prevista
      */
-    public Date getData_prevista() {
+    public String getData_prevista() {
         return data_prevista;
     }
 
     /**
      * @param data_prevista the data_prevista to set
      */
-    public void setData_prevista(Date data_prevista) {
+    public void setData_prevista(String data_prevista) {
         this.data_prevista = data_prevista;
     }
 

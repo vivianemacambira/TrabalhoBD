@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="Inserir Pessoa"/>
@@ -27,32 +27,39 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="rotuloCodigo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="textoMatricula" min="-2" pref="305" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="botaoInserir" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="rotuloNome" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="textoNome" min="-2" pref="301" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="botaoEnviar" min="-2" pref="98" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="rotuloLogin1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="textoUA" max="32767" attributes="0"/>
+                          <Component id="rotuloCodigo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="textoTituloObra" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="rotuloNome" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="textoAutorObra" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="rotuloLogin" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="textoCurso" min="-2" pref="301" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="textoObservacoes" min="-2" pref="301" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="rotuloLogin1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="comboFormatoAcessivel" min="-2" pref="221" max="-2" attributes="0"/>
+                              <Component id="botaoEscolherArquivo" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
+                  <Component id="tituloNovaSolicitacao" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="73" max="32767" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,28 +67,35 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="tituloNovaSolicitacao" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rotuloCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="textoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textoTituloObra" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rotuloNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="textoNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textoAutorObra" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rotuloLogin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="textoCurso" alignment="3" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Component id="textoObservacoes" alignment="3" min="-2" pref="112" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rotuloLogin1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="textoUA" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboFormatoAcessivel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-              <Component id="botaoInserir" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botaoEscolherArquivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="botaoEnviar" min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,24 +116,27 @@
         <Property name="text" type="java.lang.String" value="Observa&#xe7;&#xf5;es:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="textoMatricula">
+    <Component class="javax.swing.JTextField" name="textoTituloObra">
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JTextField" name="textoNome">
+    <Component class="javax.swing.JTextField" name="textoAutorObra">
     </Component>
-    <Component class="javax.swing.JTextField" name="textoCurso">
+    <Component class="javax.swing.JTextField" name="textoObservacoes">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoCursoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoObservacoesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="botaoInserir">
+    <Component class="javax.swing.JButton" name="botaoEnviar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Inserir"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Enviar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoInserirActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoEnviarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="rotuloLogin1">
@@ -127,7 +144,7 @@
         <Property name="text" type="java.lang.String" value="Formato Acess&#xed;vel Desejado:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="textoUA">
+    <Component class="javax.swing.JComboBox" name="comboFormatoAcessivel">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -139,7 +156,28 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textoUAActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboFormatoAcessivelActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="tituloNovaSolicitacao">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Nova Solicita&#xe7;&#xe3;o"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Material a ser editado:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="botaoEscolherArquivo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Escolher arquivo"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoEscolherArquivoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

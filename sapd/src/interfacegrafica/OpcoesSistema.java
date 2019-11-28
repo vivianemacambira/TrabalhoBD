@@ -13,14 +13,14 @@ import javax.swing.JOptionPane;
  *
  * @author leoomoreira
  */
-public class OpcoesSistema extends javax.swing.JDialog {
+public class OpcoesSistema extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaInserirPessoa
      */
-    public OpcoesSistema(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public OpcoesSistema() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -32,61 +32,91 @@ public class OpcoesSistema extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botaoAlterarDados = new javax.swing.JButton();
+        botaoNovaSolicitacao = new javax.swing.JButton();
+        botaoAcompSolicitacao = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Inserir Pessoa");
         setName("dialogInserirPessoa"); // NOI18N
 
-        jButton1.setText("Acompanhar Solicitação");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botaoAlterarDados.setText("Alterar Dados");
+        botaoAlterarDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaoAlterarDadosActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Nova Solicitação");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botaoNovaSolicitacao.setText("Nova Solicitação");
+        botaoNovaSolicitacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botaoNovaSolicitacaoActionPerformed(evt);
             }
         });
+
+        botaoAcompSolicitacao.setText("Acompanhar Solicitação");
+        botaoAcompSolicitacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAcompSolicitacaoActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Escolha a opção desejada");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(290, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(50, 50, 50))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botaoNovaSolicitacao, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(botaoAcompSolicitacao)
+                        .addGap(29, 29, 29)
+                        .addComponent(botaoAlterarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(botaoAlterarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoAcompSolicitacao, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoNovaSolicitacao, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botaoAlterarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarDadosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botaoAlterarDadosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botaoNovaSolicitacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovaSolicitacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        new NovaSolicitacao().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoNovaSolicitacaoActionPerformed
+
+    private void botaoAcompSolicitacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAcompSolicitacaoActionPerformed
+        // TODO add your handling code here:
+        new AcompanharSolicitacoes().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoAcompSolicitacaoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton botaoAcompSolicitacao;
+    private javax.swing.JButton botaoAlterarDados;
+    private javax.swing.JButton botaoNovaSolicitacao;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,12 +35,12 @@ public class CampusDAO extends DAO {
         stmt.close();
         fecharConexao(c);
         if (campus == null) {
-            throw new Exception("Não foi possível localizar este campus");
+            throw new Exception("Não foi possível localizar este Campus");
         }
         return campus;
-    }   
+    }  
     
-        public void inserir(Campus i) throws Exception {
+    public void inserir(Campus i) throws Exception {
         Connection c = obterConexao();
         String sql = "INSERT INTO Campus (id, nome) VALUES (?, ?)";
         PreparedStatement stmt = c.prepareStatement(sql);

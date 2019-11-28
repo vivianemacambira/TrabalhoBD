@@ -7,7 +7,7 @@ package dao;
 
 public class novaSolicitacao {
 
-    private Integer id;
+    private int id;
     private String titulo_obra;
     private String autor_obra;
     private String observacao;
@@ -15,15 +15,6 @@ public class novaSolicitacao {
     private String arquivo;
     private PCD pcd;
     private Nucleo nucleo;
-
-    
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public PCD getPcd() {
         return pcd;
@@ -81,8 +72,11 @@ public class novaSolicitacao {
         this.nucleo = nucleo;
     }
 
-
-
+    public int getId() {
+        return id;
+    }
     
-    
+    public void setID(int id){
+        this.id = id;
+    }  
 }
